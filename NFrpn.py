@@ -17,12 +17,18 @@ def calc2(a,b,cmd):
 	return ans
 	
 # 1 parameter command
+'''
 def xeq_sqrt(a):
   return math.sqrt(a)
-  
+  '''
 one_p = {
-	'sqrt()': xeq_sqrt
+#	'sqrt()': xeq_sqrt
+	'sqrt()':'math.sqrt(a)'
 }
+
+def calc1(a,cmd):
+	ans = eval(one_p[cmd])
+	return ans
 
 # Registers
 def max4(stack):
@@ -45,8 +51,11 @@ def eval_expression(tokens, stack):
       stack.append(calc2(a,b,token))
     elif token in one_p:
     	a = stack.pop()
-    	op = one_p[token]
-    	stack.append(op(a))
+    	stack.append(calc1(a,token))
+'''
+#op = one_p[token]
+#stack.append(op(a))
+'''
     elif token in cmd:
     	print(token+' is done!/estas farita!')
 #    else:
