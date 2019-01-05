@@ -12,7 +12,7 @@ two_p = {
 	'/': 'b/a'
 	}
 
-def calc(a,b,cmd):
+def calc2(a,b,cmd):
 	ans =eval(two_p[cmd])
 	return ans
 	
@@ -42,7 +42,7 @@ def eval_expression(tokens, stack):
         raise ValueError('Must have at least two parameters to perform op')
       a = stack.pop()
       b = stack.pop()
-      stack.append(calc(a,b,token))
+      stack.append(calc2(a,b,token))
     elif token in one_p:
     	a = stack.pop()
     	op = one_p[token]
