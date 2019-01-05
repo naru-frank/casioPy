@@ -1,4 +1,8 @@
+# module
 import math
+
+#global vars
+stack = []
 
 def add(a,b):
   return a+b
@@ -49,6 +53,8 @@ def eval_expression(tokens, stack):
     	a = stack.pop()
     	op = one_p[token]
     	stack.append(op(a))
+    elif token in cmd:
+    	print(token+' is done!/estas farita!')
     else:
       raise ValueError("WTF? %s" % token)
   return stack
@@ -81,22 +87,38 @@ def disp_stack(stack):
     print('\n')
     print('Y:{:>12}'.format(stack[0]))
     print('X:{:>12}'.format(stack[1]))
-  else:
+  elif len(stack)==1:
     print('\n')
     print('\n')
     print('\n')
     print('X:{:>12}'.format(stack[0]))
+  else:
+  	print('Hello!/Saluton!')
 
+def clear_stack():
+  global stack
+  stack = []
+	
+cmd = {
+	'q':'quit()',
+	'quit':'quit()',
+	'exit':'quit()',
+	'clear':'clear_stack()'
+}
 
 def main():
-  stack = []
+#  stack = []
+  global stack
   while True:
     expression = input('> ')
-    if expression in ['quit','q','exit']:
-      quit()
-    elif expression in ['clear','empty']:
-      stack = []
-      continue
+#    if expression in ['quit','q','exit']:
+#      quit()
+    if expression in cmd:
+#      print('Gxis revido!')
+      eval(cmd[expression])
+#    elif expression in ['clear','empty']:
+#      stack = []
+#      continue
     elif expression in ['rd']:
     	rolldown(stack)
     	disp_stack(stack)
