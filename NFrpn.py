@@ -111,14 +111,8 @@ def main():
   global stack
   while True:
     expression = input('> ')
-#    if expression in ['quit','q','exit']:
-#      quit()
     if expression in cmd:
-#      print('Gxis revido!')
-      eval(cmd[expression])
-#    elif expression in ['clear','empty']:
-#      stack = []
-#      continue
+    	eval(cmd[expression])
     elif expression in ['rd']:
     	rolldown(stack)
     	disp_stack(stack)
