@@ -4,6 +4,7 @@ import math
 #global vars
 stack = []
 
+# 2 parameters command
 def add(a,b):
   return a+b
 
@@ -16,20 +17,22 @@ def mul(a,b):
 def truediv(a,b):
   return a/b
 
-def xeq_sqrt(a):
-  return math.sqrt(a)
-
 two_p = {
 	'+': add,
 	'-': sub,
 	'*': mul,
 	'/': truediv
 	}
-
+	
+# 1 parameter command
+def xeq_sqrt(a):
+  return math.sqrt(a)
+  
 one_p = {
 	'sqrt()': xeq_sqrt
 }
 
+# Registers
 def max4(stack):
 	if len(stack)>4:
 	  del stack[0]
@@ -62,7 +65,8 @@ def eval_expression(tokens, stack):
 def rolldown(stack):
 	pop_reg = stack.pop()
 	stack.insert(0,pop_reg)
-
+	disp_stack(stack)
+	
 def rollup(stack):
   push_reg = stack.pop(0)
   stack.insert(-1,push_reg)
@@ -72,17 +76,17 @@ def swap(stack):
   stack.insert(-2,swap_reg)
 
 def disp_stack(stack):
-  if len(stack)>3:
+  if len(stack)==4:
     print('T:{:>12}'.format(stack[0]))
     print('Z:{:>12}'.format(stack[1]))
     print('Y:{:>12}'.format(stack[2]))
     print('X:{:>12}'.format(stack[3]))
-  elif len(stack)>2:
+  elif len(stack)==3:
     print('\n')
     print('Z:{:>12}'.format(stack[0]))
     print('Y:{:>12}'.format(stack[1]))
     print('X:{:>12}'.format(stack[2]))
-  elif len(stack)>1:
+  elif len(stack)==2:
     print('\n')
     print('\n')
     print('Y:{:>12}'.format(stack[0]))
@@ -103,7 +107,8 @@ cmd = {
 	'q':'quit()',
 	'quit':'quit()',
 	'exit':'quit()',
-	'clear':'clear_stack()'
+	'clear':'clear_stack()',
+	'rd':'rolldown(stack)'
 }
 
 def main():
@@ -113,10 +118,11 @@ def main():
     expression = input('> ')
     if expression in cmd:
     	eval(cmd[expression])
-    elif expression in ['rd']:
-    	rolldown(stack)
-    	disp_stack(stack)
     	continue
+#    elif expression in ['rd']:
+#    	rolldown(stack)
+#    	disp_stack(stack)
+#    	continue
     elif len(expression)==0:
       continue
     stack = eval_expression(expression.split(), stack)
