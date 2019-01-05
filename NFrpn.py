@@ -5,24 +5,16 @@ import math
 stack = []
 
 # 2 parameters command
-def add(a,b):
-  return a+b
-
-def sub(a,b):
-  return a-b
-
-def mul(a,b):
-  return a*b
-
-def truediv(a,b):
-  return a/b
-
 two_p = {
-	'+': add,
-	'-': sub,
-	'*': mul,
-	'/': truediv
+	'+': 'b+a',
+	'-': 'b-a',
+	'*': 'b*a',
+	'/': 'b/a'
 	}
+
+def calc(a,b,cmd):
+	ans =eval(two_p[cmd])
+	return ans
 	
 # 1 parameter command
 def xeq_sqrt(a):
@@ -39,10 +31,10 @@ def max4(stack):
 
 def eval_expression(tokens, stack):
   for token in tokens:
-    if set(token).issubset(set("-0123456789")):
+    if set(token).issubset(set("0123456789")):
       stack.append(int(token))
       max4(stack)
-    elif set(token).issubset(set("-0123456789.")):
+    elif set(token).issubset(set("0123456789.")):
       stack.append(float(token))
       max4(stack)
     elif token in two_p:
@@ -50,16 +42,15 @@ def eval_expression(tokens, stack):
         raise ValueError('Must have at least two parameters to perform op')
       a = stack.pop()
       b = stack.pop()
-      op = two_p[token]
-      stack.append(op(b,a))
+      stack.append(calc(a,b,token))
     elif token in one_p:
     	a = stack.pop()
     	op = one_p[token]
     	stack.append(op(a))
     elif token in cmd:
     	print(token+' is done!/estas farita!')
-    else:
-      raise ValueError("WTF? %s" % token)
+#    else:
+#      raise ValueError("WTF? %s" % token)
   return stack
 
 def rolldown(stack):
