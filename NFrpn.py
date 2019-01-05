@@ -12,16 +12,19 @@ def mul(a,b):
 def truediv(a,b):
   return a/b
 
-def xeq_sqrt(a,b):
-  return math.sqrt(b)
+def xeq_sqrt(a):
+  return math.sqrt(a)
 
-ops = {
+two_p = {
 	'+': add,
 	'-': sub,
 	'*': mul,
-	'/': truediv,
-	'sqrt()': xeq_sqrt
+	'/': truediv
 	}
+
+one_p = {
+	'sqrt()': xeq_sqrt
+}
 
 def max4(stack):
 	if len(stack)>4:
@@ -35,13 +38,17 @@ def eval_expression(tokens, stack):
     elif set(token).issubset(set("-0123456789.")):
       stack.append(float(token))
       max4(stack)
-    elif token in ops:
-#      if len(stack) < 2:
-#        raise ValueError('Must have at least two parameters to perform op')
+    elif token in two_p:
+      if len(stack) < 2:
+        raise ValueError('Must have at least two parameters to perform op')
       a = stack.pop()
       b = stack.pop()
-      op = ops[token]
+      op = two_p[token]
       stack.append(op(b,a))
+    elif token in one_p:
+    	a = stack.pop()
+    	op = one_p[token]
+    	stack.append(op(a))
     else:
       raise ValueError("WTF? %s" % token)
   return stack
