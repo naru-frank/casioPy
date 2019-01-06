@@ -5,17 +5,17 @@ import math
 stack = []
 
 # 2 parameters command
-two_p = {
-	'+': 'b+a',
-	'-': 'b-a',
-	'*': 'b*a',
-	'/': 'b/a'
-	}
+two_p = ['+','-','*','/']
 
 def calc2(a,b,cmd):
   if cmd == '+':
     ans = b+a
-#	ans =eval(two_p[cmd])
+  elif cmd == '-':
+    ans= b-a
+  elif cmd == '*':
+    ans = b*a
+  elif cmd == '/':
+    ans = b/a
   return ans
 
 # 1 parameter command
