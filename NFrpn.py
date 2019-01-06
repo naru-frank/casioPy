@@ -15,7 +15,7 @@ two_p = {
 def calc2(a,b,cmd):
 	ans =eval(two_p[cmd])
 	return ans
-	
+
 # 1 parameter command
 '''
 def xeq_sqrt(a):
@@ -52,10 +52,6 @@ def eval_expression(tokens, stack):
     elif token in one_p:
     	a = stack.pop()
     	stack.append(calc1(a,token))
-'''
-#op = one_p[token]
-#stack.append(op(a))
-'''
     elif token in cmd:
     	print(token+' is done!/estas farita!')
 #    else:
@@ -66,14 +62,16 @@ def rolldown(stack):
 	pop_reg = stack.pop()
 	stack.insert(0,pop_reg)
 	disp_stack(stack)
-	
+
 def rollup(stack):
   push_reg = stack.pop(0)
   stack.insert(-1,push_reg)
+  disp_stack(stack)
 
 def swap(stack):
   swap_reg = stack.pop()
   stack.insert(-2,swap_reg)
+  disp_stack(stack)
 
 def disp_stack(stack):
   if len(stack)==4:
@@ -102,13 +100,15 @@ def disp_stack(stack):
 def clear_stack():
   global stack
   stack = []
-	
+
 cmd = {
 	'q':'quit()',
 	'quit':'quit()',
 	'exit':'quit()',
 	'clear':'clear_stack()',
-	'rd':'rolldown(stack)'
+	'rd':'rolldown(stack)',
+  'ru':'rollup(stack)',
+  'sw':'swap(stack)'
 }
 
 def main():
@@ -119,16 +119,12 @@ def main():
     if expression in cmd:
     	eval(cmd[expression])
     	continue
-#    elif expression in ['rd']:
-#    	rolldown(stack)
-#    	disp_stack(stack)
-#    	continue
     elif len(expression)==0:
       continue
     stack = eval_expression(expression.split(), stack)
     disp_stack(stack)
     print(expression)
-    
+
 if (__name__ == '__main__')\
 or(__name__ == 'NFrpn'):
 	main()
