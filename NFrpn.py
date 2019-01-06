@@ -155,6 +155,7 @@ def main():
     	continue
     elif len(expression)==0:
       continue
+    expression = expression.replace(',',' ')
     stack = eval_expression(expression.split(), stack)
     disp_stack(stack)
     print(expression)
