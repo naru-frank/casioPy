@@ -13,9 +13,10 @@ two_p = {
 	}
 
 def calc2(a,b,cmd):
-  ans = two_p['+'] if cmd == '+'
+  if cmd == '+':
+    ans = b+a
 #	ans =eval(two_p[cmd])
-	return ans
+  return ans
 
 # 1 parameter command
 '''
