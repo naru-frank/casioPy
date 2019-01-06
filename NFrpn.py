@@ -5,7 +5,7 @@ import math
 stack = []
 
 # 2 parameters command
-two_p = ['+','-','*','/']
+two_p = ['+','-','*','/','**']
 
 def calc2(a,b,cmd):
   if cmd == '+':
@@ -16,49 +16,57 @@ def calc2(a,b,cmd):
     ans = b*a
   elif cmd == '/':
     ans = b/a
+  elif cmd == '**':
+    ans = b**a
   return ans
 
 # 1 parameter command
-'''
-def xeq_sqrt(a):
-  return math.sqrt(a)
-  '''
-one_p = {
-#	'sqrt()': xeq_sqrt
-	'sqrt()':'math.sqrt(a)'
-}
+one_p = [
+	'sqrt()',
+  '**2',
+  'log10()',
+  'log()',
+  'exp()',
+  'sin()',
+  'asin()',
+  'cos()',
+  'acos()',
+  'tan',
+  'atan',
+  '**-1'
+  ]
 
 def calc1(a,cmd):
-	ans = eval(one_p[cmd])
-	return ans
+  if cmd == 'sqrt()':
+    ans = math.sqrt(a)
+  if cmd == '**2':
+    ans = a**2
+  if cmd == 'log10()':
+    ans = math.log10(a)
+  if cmd == 'log()':
+    ans = math.log(a)
+  if cmd == 'exp()':
+    ans = math.exp(a)
+  if cmd == 'sin()':
+    ans = math.sin(a)
+  if cmd == 'asin()':
+    ans = math.asin(a)
+  if cmd == 'cos()':
+    ans = math.cos(a)
+  if cmd == 'acos()':
+    ans = math.acos(a)
+  if cmd == 'tan()':
+    ans = math.tan(a)
+  if cmd == 'atan()':
+    ans = math.atan(a)
+  if cmd == '**-1':
+    ans = a**-1
+  return ans
 
 # Registers
 def max4(stack):
 	if len(stack)>4:
 	  del stack[0]
-
-def eval_expression(tokens, stack):
-  for token in tokens:
-    if set(token).issubset(set("0123456789")):
-      stack.append(int(token))
-      max4(stack)
-    elif set(token).issubset(set("0123456789.")):
-      stack.append(float(token))
-      max4(stack)
-    elif token in two_p:
-      if len(stack) < 2:
-        raise ValueError('Must have at least two parameters to perform op')
-      a = stack.pop()
-      b = stack.pop()
-      stack.append(calc2(a,b,token))
-    elif token in one_p:
-    	a = stack.pop()
-    	stack.append(calc1(a,token))
-    elif token in cmd:
-    	print(token+' is done!/estas farita!')
-#    else:
-#      raise ValueError("WTF? %s" % token)
-  return stack
 
 def rolldown(stack):
 	pop_reg = stack.pop()
@@ -112,6 +120,30 @@ cmd = {
   'ru':'rollup(stack)',
   'sw':'swap(stack)'
 }
+
+#operations
+def eval_expression(tokens, stack):
+  for token in tokens:
+    if set(token).issubset(set("0123456789")):
+      stack.append(int(token))
+      max4(stack)
+    elif set(token).issubset(set("0123456789.")):
+      stack.append(float(token))
+      max4(stack)
+    elif token in two_p:
+      if len(stack) < 2:
+        raise ValueError('Must have at least two parameters to perform op')
+      a = stack.pop()
+      b = stack.pop()
+      stack.append(calc2(a,b,token))
+    elif token in one_p:
+    	a = stack.pop()
+    	stack.append(calc1(a,token))
+    elif token in cmd:
+    	print(token+' is done!/estas farita!')
+#    else:
+#      raise ValueError("WTF? %s" % token)
+  return stack
 
 def main():
 #  stack = []
