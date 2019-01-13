@@ -1,0 +1,44 @@
+'ProgramMode:RUN
+74->Dim List 2
+0->List 2[71]
+1->List 2[72]
+4->List 2[73]
+7->List 2[74]
+2->List 2[62]
+5->List 2[63]
+8->List 2[64]
+3->List 2[52]
+6->List 2[53]
+9->List 2[54]
+
+0->N
+0->Z
+
+
+Lbl 0
+10->Y
+
+Do
+Cls
+Lbl Y
+If Y<>0
+Then Y-1->Y
+Locate 1,6,Y
+Goto Y
+IfEnd
+Getkey->K
+Locate 1,1,K
+LpWhile K=0
+
+
+If K=71 Or K=72 Or K=73 Or K=74 Or K=62 Or K=63 Or K=64 Or K=52 Or K=53 Or K=54
+Then 
+List 2[K]->Z
+10N+Z->N
+Locate 1,7,N
+IfEnd
+
+If K<>31
+Then Goto 0
+
+Return
