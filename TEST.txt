@@ -1,18 +1,56 @@
 'ProgramMode:RUN
+'Stack initialize
 6->Dim List 1
 
+'INPUT func initialize
+74->Dim List 2
+0->List 2[71]
+1->List 2[72]
+4->List 2[73]
+7->List 2[74]
+2->List 2[62]
+5->List 2[63]
+8->List 2[64]
+3->List 2[52]
+6->List 2[53]
+9->List 2[54]
+
+0->N
+0->Z
+
+'Main Loop
+While 1
+
+'Display
 Lbl 0
-'_While _1
-'_Getkey__->_K
-'_While _K=0
-Getkey->K
 ClrText
 Locate 1,3,List 1[4]
 Locate 1,4,List 1[3]
 Locate 1,5,List 1[2]
 Locate 1,6,List 1[1]
 Locate 15,3,K
-'_WhileEnd_
+
+'input box
+Lbl 9
+10->Y
+Lbl Y
+If Y<>0
+Then Y-1->Y
+Locate 10,6,Y
+Goto Y
+IfEnd
+Getkey->K
+Locate 1,1,K
+
+If K=71 Or K=72 Or K=73 Or K=74 Or K=62 Or K=63 Or K=64 Or K=52 Or K=53 Or K=54
+Then
+List 2[K]->Z
+10N+Z->N
+Locate 1,7,N
+IfEnd
+
+If K<>31
+Then Goto 9
 
 If K=42:Then Goto 3
 Else If K=31:Then Goto 1
@@ -20,7 +58,6 @@ Else If K=31:Then Goto 1
 IfEnd
 
 Lbl 1
-"INPUT"?->N
 List 1[3]->List 1[4]
 List 1[2]->List 1[3]
 List 1[1]->List 1[2]
@@ -34,3 +71,5 @@ List 1[3]->List 1[2]
 List 1[4]->List 1[3]
 List 1[5]->List 1[4]
 Goto 0
+
+_WhileEnd_
