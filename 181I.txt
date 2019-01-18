@@ -49,18 +49,19 @@ List 2[K]->Z
 10N+Z->N
 Locate 1,7,N
 
-If K=44
-Then 
-N/10->N
-ClrText
-Locate 15,7,N
-Goto 9
-IfEnd
-
 If K=31:Then Goto 1
 IfEnd
 
 IfEnd
+
+If K=44
+Then 
+N Int/ 10->N
+ClrText
+Locate 1,7,N
+Goto 9
+IfEnd
+
 
 If K=42:Then Goto 3
 IfEnd
