@@ -76,11 +76,11 @@ N->List 1[1]
 Goto 0
 
 Lbl C
-If K=42:Then List 1[1]+N->A
-ElseIf K=43:Then List 1[1]*N->A
-ElseIf K=32:Then List 1[1]-N->A
-ElseIf K=33:Then List 1[1]/N->A
-IfEnd
+If K=42:Then List 1[1]+N->A:IfEnd
+If K=43:Then List 1[1]*N->A:IfEnd
+If K=32:Then List 1[1]-N->A:IfEnd
+If K=33:Then List 1[1]/N->A:IfEnd
+
 A->List 1[1]
 List 1[3]->List 1[2]
 List 1[4]->List 1[3]
