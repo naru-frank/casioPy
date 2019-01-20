@@ -48,11 +48,14 @@ Then List 2[K]->Z
 10N+Z->N
 Locate 1,7,N
 
+'input box - enter(exe) func
 If K=31:Then Goto 1
 IfEnd
 
 IfEnd
+'end of input box
 
+'del func
 If K=44
 Then N Int/ 10->N
 ClrText
@@ -60,13 +63,16 @@ Locate 1,7,N
 Goto 9
 IfEnd
 
-
+'calc
 If K=42 Or K=43 Or K=32 Or K=33:Then Goto C:IfEnd
 
+'Loop
 If K<>31
 Then Goto 9
 IfEnd
 
+'[functions]
+'Enter
 Lbl 1
 List 1[3]->List 1[4]
 List 1[2]->List 1[3]
@@ -75,6 +81,7 @@ N->List 1[1]
 0->N
 Goto 0
 
+'Arithmetric
 Lbl C
 If K=42:Then List 1[1]+N->A:IfEnd
 If K=43:Then List 1[1]*N->A:IfEnd
@@ -88,4 +95,5 @@ List 1[5]->List 1[4]
 0->N
 Goto 0
 
+'End of Loop
 WhileEnd
