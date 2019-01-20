@@ -61,8 +61,7 @@ Goto 9
 IfEnd
 
 
-If K=42:Then Goto 3
-IfEnd
+If K=42:Then Goto C:IfEnd
 
 If K<>31
 Then Goto 9
@@ -76,8 +75,8 @@ N->List 1[1]
 0->N
 Goto 0
 
-Lbl 3
-N+List 1[1]->A
+Lbl C
+IF K=42:Then N+List 1[1]->A:IfEnd
 A->List 1[1]
 List 1[3]->List 1[2]
 List 1[4]->List 1[3]
