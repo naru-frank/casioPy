@@ -44,8 +44,7 @@ Getkey->K
 Locate 1,1,K
 
 If K=71 Or K=72 Or K=73 Or K=74 Or K=62 Or K=63 Or K=64 Or K=52 Or K=53 Or K=54
-Then
-List 2[K]->Z
+Then List 2[K]->Z
 10N+Z->N
 Locate 1,7,N
 
@@ -55,8 +54,7 @@ IfEnd
 IfEnd
 
 If K=44
-Then
-N Int/ 10->N
+Then N Int/ 10->N
 ClrText
 Locate 1,7,N
 Goto 9
@@ -84,6 +82,7 @@ A->List 1[1]
 List 1[3]->List 1[2]
 List 1[4]->List 1[3]
 List 1[5]->List 1[4]
+0->N
 Goto 0
 
 WhileEnd
