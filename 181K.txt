@@ -73,7 +73,9 @@ IfEnd
 If K=42 Or K=43 Or K=32 Or K=33:Then Goto C:IfEnd
 
 'calc 1op
-If S=0 And K=67:Then Goto F:IfEnd
+If S=0
+Then If K=67:Then Goto F:IfEnd
+IfEnd
 
 'shift key
 If K=78
@@ -82,7 +84,9 @@ IfEnd
 If S=1:Then Locate 21,1,"S":Else Locate 21,1," ":IfEnd
 
 'shift operations
-If S=1 And K=67:Then Goto S:IfEnd
+If S=1
+Then If K=67:Then Goto S:IfEnd
+IfEnd
 
 'Loop
 If K<>31
