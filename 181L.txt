@@ -80,6 +80,7 @@ If K=42:Then 420->C:Goto C:IfEnd
 If K=43:Then 430->C:Goto C:IfEnd
 If K=32:Then 320->C:Goto C:IfEnd
 If K=33:Then 330->C:Goto C:IfEnd
+If S=0 And K=57:Then 570->C:Goto C:IfEnd
 
 'calc 1op
 If S=0 And K=67:Then 670->C:Goto F:IfEnd
@@ -109,6 +110,7 @@ If C=420:Then List 1[1]+N->A:IfEnd
 If C=430:Then List 1[1]*N->A:IfEnd
 If C=320:Then List 1[1]-N->A:IfEnd
 If C=330:Then List 1[1]/N->A:IfEnd
+If C=570:Then List 1[1]^N->A:IfEnd
 A->List 1[1]
 List 1[3]->List 1[2]
 List 1[4]->List 1[3]
