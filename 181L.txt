@@ -57,10 +57,6 @@ Locate 1,7,N
 IfEnd
 'end of input box
 
-'input box - enter(exe) func
-If K=31:Then Goto 1
-IfEnd
-
 'del func
 If K=44
 Then N Int/ 10->N
