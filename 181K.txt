@@ -69,7 +69,7 @@ Goto 9
 IfEnd
 
 'calc 2op
-If K=42 Or K=43 Or K=32 Or K=33 Or K=67:Then Goto C:IfEnd
+If K=42 Or K=43 Or K=32 Or K=33:Then Goto C:IfEnd
 
 'calc 1op
 If K=67:Then Goto F:IfEnd
