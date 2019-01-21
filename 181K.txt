@@ -74,6 +74,12 @@ If K=42 Or K=43 Or K=32 Or K=33:Then Goto C:IfEnd
 'calc 1op
 If K=67:Then Goto F:IfEnd
 
+'shift key
+If K=78
+Then If S=0:Then 1->S:Else 0->S:IfEnd
+IfEnd
+If S=1:Then Locate 21,1,"S":Else Locate 21,1," ":IfEnd
+
 'Loop
 If K<>31
 Then Goto 9
